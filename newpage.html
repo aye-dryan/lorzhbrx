@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>...</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: #222222;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 10%;
+            font-size: 3rem;
+            color: white;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Cute Pink Button */
+        button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            color: white;
+            background-color: #ff69b4; /* Cute pink color */
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff85c1; /* Lighter pink on hover */
+            transform: translate(-50%, -50%) scale(1.1); /* Slight zoom effect */
+        }
+
+        /* Floating Image Animation Styles */
+        .floating-image {
+            position: absolute;
+            animation: floatSlide 6s linear infinite;
+        }
+
+        @keyframes floatSlide {
+            0% {
+                transform: translate(0, 100vh);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(20vw, 50vh);
+            }
+            100% {
+                transform: translate(-20vw, -10vh);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Wow gumana lol Xd!</h1>
+
+    <!-- Next Button -->
+    <button onclick="goToNextPage()">Next</button>
+
+    <script>
+        function createImages() {
+            for (let i = 0; i < 5; i++) { // Reduced the number of images to 5
+                const img = document.createElement('img');
+                img.src = 'pixelhrt.png'; // Replace 'pixelhrt.png' with the path to your image
+                img.classList.add('floating-image');
+                img.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+                img.style.animationDuration = Math.random() * 4 + 3 + 's'; // Random float duration
+                img.style.width = img.style.height = Math.random() * 100 + 150 + 'px'; // Larger random size (150px to 250px)
+                document.body.appendChild(img);
+
+                // Remove the image after the animation ends
+                img.addEventListener('animationend', () => {
+                    img.remove();
+                });
+            }
+        }
+
+        // Create images every 1.5 seconds
+        setInterval(createImages, 1500);
+
+        // Function for the Next button
+        function goToNextPage() {
+            window.location.href = 'nextpage.html'; // Replace 'nextpage.html' with the actual next page URL
+        }
+    </script>
+</body>
+</html>
